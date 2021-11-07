@@ -1,1 +1,26 @@
-##注文履歴一覧画面
+<main>
+  <div class="order-list-page">
+    <span class="page-title">注文履歴一覧</span>
+    <div class="contents">
+      <table class="table order-table">
+        <thead bgcolor="#DDDDDD">
+          <th width="200px" scope="col">購入日時</th>
+          <th width="200px">購入者</th>
+          <th width="200px">注文個数</th>
+          <th width="200px">注文ステータス</th>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+          <td><%= link_to admin_order_path(order.id) do %><%= l(order.created_at) %><% end %></td>
+          <td><%= order.customer_name %></td>
+          <td><%= order.amount %></td>
+          <td><%= order.order_status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</main>
