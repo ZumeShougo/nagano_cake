@@ -1,0 +1,33 @@
+<main>
+  <div class = "first-page">
+    <div class = "top-image">
+      <div class = "explain-image">
+        <%= image_tag 'ケーキ画像その１.jpeg' , size: '500*280' %>
+        <p>いらっしゃいませ　Nagano cake へ <br>
+        こちらはケーキ販売サイトです</p>
+      </div>
+    </div>
+    <div class = "new_item_list">
+      <span class = "new_item_list_title">新着商品</span>
+      <table class = "new_item_table">
+        <tbody>
+          <tr>
+            <% @new_items.each do |new_item | %>
+              <td>
+                <div class = "item_images">
+                  <% link_to item_path(new_item.id) do %>
+                    <%= attachment_image_tag new_item, :image, size: "150*150" %>
+                  <% end %>
+                </div><br>
+                <%= new_item.name %><br>
+                <p>
+                  ¥<%= new_item.price %>
+                </p>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
