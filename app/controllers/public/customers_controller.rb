@@ -14,14 +14,14 @@ class Public::CustomersController < ApplicationController
     redirect_to customer_path(params[:id])
   end
 
-  def unsubscribe
+  def withdraw
     @customer = Customer.find(current_customer.id)
     @customer.update(is_active: "true")
     reset_session
     redirect_to root_path
   end
 
-  def withdraw
+  def unsubscribe
 
   end
 
