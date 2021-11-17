@@ -1,0 +1,42 @@
+<main>
+  <div class = "address-index">
+    <span class = "page-title">　配送先一覧　/　登録　</span>
+    <div class = "address-table">
+      <table>
+        <thead bgcolor = "#DDDDDD">
+          <th width = "100">
+            郵便番号
+          </th>
+          <th width = "400">
+            住所
+          </th>
+          <th width = "100">
+            宛名
+          </th>
+          <th width = "200">
+          </th>
+        </thead>
+        <tbody>
+          <% @addresses.each do |address| %>
+            <tr>
+              <th>
+                <%= address.postal_code %>
+              </th>
+              <th>
+                <%= address.address %>
+              </th>
+              <th>
+                <%= address.name %>
+              </th>
+              <th>
+                <span>
+                  <%= link_to "編集する", edit_address_path(address.id),class: "btn btn-success btn-sm" %>
+                  <%= link_to "削除する"
+                </span>
+              </th>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
