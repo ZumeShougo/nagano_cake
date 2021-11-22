@@ -1,0 +1,71 @@
+<main>
+  <div class = "order-page">
+    <span class = "order-page-title">
+      注文情報入力
+    </span>
+    <div class = "contents">
+      <%= form_with model:@order, local: true do |f| %>
+        <div class = "chapter-title">
+          支払い方法
+        </div>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+        <%= f.label :payment_mathod, "クレジットカード"  Order.payment_methods_i18n[:credit_card] %>
+
+        <%= f.radio_button :payment_mathod, Order.payment_methods.key(1) %>
+        <%= f.label :payment_mathod, "銀行振込" Order.payment_methods_i18n[:transfer] %>
+
+        <div class = "chapter-title">
+          お届け先
+        </div>
+        <div class = "select-form">
+
+          <%= radio_button :select_address, 0 %> ご自身の住所<br>
+          <div class = "menu">
+            〒 <%= current_customer.postal_code %> <%= current_customer.address %><br>
+            <%= current_customer.last_name %> <%= current_customer.first_name %>
+          </div>
+
+          <%= f.radio_button :select_address, 1 %>登録住所から選択<br>
+          <div class = "menu">
+            <%= f.select :address_id, option_from_collection_for_select(Address.all, :id, :full_address) %>
+          </div>
+
+          <%= f.radio_button :select_address, 2 %>新しいお届け先<br>
+          <div class = "menu">
+            <table class = "new-address-table">
+              <tr>
+                <td width = "200px">
+                  郵便番号（ハイフン無し）
+                </td>
+                <td width = "500px">
+                  <%= f.text_field :order_postal_code %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  住所
+                </td>
+                <td>
+                  <%= f.text_field :order_address %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  宛名
+                </td>
+                <td>
+                  <%= f.text_field :order_name %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class = "next-page">
+          <%= submit "確認画面へ進む", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</main>

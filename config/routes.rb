@@ -36,28 +36,29 @@ Rails.application.routes.draw do
   end
 
 
+
   #public_homes
-  get '/' => 'homes#top'
-  get 'about' => 'homes#about'
+  get '/' => 'public/homes#top'
+  get 'about' => 'public/homes#about'
 
   #public_items
   resources :items, only:[:index, :show]
 
   #public_customers
-  get 'customers/my_page' => 'customers#show'
-  get 'customers/edit' => 'customers#edit'
-  patch 'customers' => 'customers#update'
-  get 'customers/unsubscribe' => 'customers#unsubscribe'
-  patch 'customers/withdraw' => 'customers#withdraw'
+  get 'customers/my_page' => 'public/customers#show'
+  get 'customers/edit' => 'public/customers#edit'
+  patch 'customers' => 'public/customers#update'
+  get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+  patch 'customers/withdraw' => 'public/customers#withdraw'
 
   #public_cart_items
   resources :cart_items, only:[:index, :update, :create, :destroy]
-  delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
 
   #public_orders
   resources :orders, only:[:index, :show, :new, :create]
-  post 'orders/confirm' => 'orders#confirm'
-  get 'orders/complete' => 'orders#complete'
+  post 'orders/confirm' => 'public/orders#confirm'
+  get 'orders/complete' => 'publicorders#complete'
 
   #public_addresses
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]

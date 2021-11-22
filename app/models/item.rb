@@ -7,6 +7,10 @@ class Item < ApplicationRecord
     
   enum sales_status: { on_sale: 0, off_sale: 1 }
   
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  
   
   
 end

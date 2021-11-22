@@ -2,7 +2,7 @@
   <div class = "first-page">
     <div class = "top-image">
       <div class = "explain-image">
-        <%= image_tag 'ケーキ画像その１.jpeg' , size: '500*280' %>
+        
         <p>いらっしゃいませ　Nagano cake へ <br>
         こちらはケーキ販売サイトです</p>
       </div>
@@ -12,7 +12,7 @@
       <table class = "new_item_table">
         <tbody>
           <tr>
-            <% @new_items.each do |new_item | %>
+            <%= @new_items.each do |new_item | %>
               <td>
                 <div class = "item_images">
                   <% link_to item_path(new_item.id) do %>
