@@ -34,13 +34,13 @@
       <tbody>
         <td width="150">会員ステータス</td>
         <td width="500">
-          <% if @customer.is_active == true %>
+          <% if @customer.is_deleted == false %>
           <font color="green">有効</font>
           <% else %>
           <font color="#DDDDDD">退会</font>
           <% end %>
         </td>
-      </tbody>        
+      </tbody>
       <tbody>
         <td width="150"></td>
         <td width="500px"><%= link_to "　編集する　", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>　　　　　<%= link_to "　注文履歴一覧を見る　", admin_root_path(order_sort: 1), class: "btn btn-primary" %></td>

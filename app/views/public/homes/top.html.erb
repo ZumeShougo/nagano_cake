@@ -12,7 +12,7 @@
       <table class = "new_item_table">
         <tbody>
           <tr>
-            <%= @new_items.each do |new_item | %>
+            <% @new_items.each do |new_item | %>
               <td>
                 <div class = "item_images">
                   <% link_to item_path(new_item.id) do %>
