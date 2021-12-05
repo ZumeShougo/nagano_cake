@@ -5,7 +5,7 @@
     </span>
     <div class = "contents">
       <table class = "address-edit-table">
-        <%= form_with model: @address, url: {controller: 'addresses', action: 'update'},local: true do |f| %>
+        <%= form_with model: @address, url: addresses_path, local: true do |f| %>
           <tbody>
             <tr>
               <td width = "200px">

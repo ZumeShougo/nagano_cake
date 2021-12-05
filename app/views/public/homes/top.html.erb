@@ -2,31 +2,26 @@
   <div class = "first-page">
     <div class = "top-image">
       <div class = "explain-image">
-        
         <p>いらっしゃいませ　Nagano cake へ <br>
-        こちらはケーキ販売サイトです</p>
+        こちらはケーキ販売サイトです
+        </p>
       </div>
     </div>
     <div class = "new_item_list">
       <span class = "new_item_list_title">新着商品</span>
-      <table class = "new_item_table">
-        <tbody>
-          <tr>
-            <% @new_items.each do |new_item | %>
-              <td>
-                <div class = "item_images">
-                  <% link_to item_path(new_item.id) do %>
-                    <%= attachment_image_tag new_item, :image, size: "150*150" %>
-                  <% end %>
-                </div><br>
-                <%= new_item.name %><br>
-                <p>
-                  ¥<%= new_item.price %>
-                </p>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
+      <table class="table table-striped bg-light">
+        <tr>
+          <th>商品名</th>
+          <th>イメージ</th>
+          <th>商品単価</th>
+        </tr>
+        <% @new_items.each do |new_item| %>
+        <tr>
+          <td><%= link_to new_item.name, items_path(new_item) %></td>
+          <td><%= attachment_image_tag new_item, :image, format: 'jpeg' %></td>
+          <td><%= new_item.price %></td>
+        </tr>
+        <% end %>
       </table>
     </div>
   </div>

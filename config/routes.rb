@@ -42,7 +42,8 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
 
   #public_items
-  resources :items, only:[:index, :show]
+  get 'items' => 'public/items#index'
+  get 'items/:id' => 'public/items#show'
 
   #public_customers
   get 'customers/my_page' => 'public/customers#show'
@@ -52,16 +53,27 @@ Rails.application.routes.draw do
   patch 'customers/withdraw' => 'public/customers#withdraw'
 
   #public_cart_items
-  resources :cart_items, only:[:index, :update, :create, :destroy]
-  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  get 'cart_items' => 'public/cart_items#index'
+  patch 'cart_items/:id' => 'public/cart_items#update'
+  post 'cart_items' => 'public/cart_items#create'
+  delete 'cart_items/:id' => 'public/cart_items#destroy'
+  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
 
   #public_orders
-  resources :orders, only:[:index, :show, :new, :create]
+  get 'orders' => 'public/orders#index'
+  get 'orders/:id' => 'public/orders#show'
+  get 'orders/new' => 'public/orders#new'
+  post 'orders' => 'public/orders#create'
   post 'orders/confirm' => 'public/orders#confirm'
   get 'orders/complete' => 'publicorders#complete'
 
   #public_addresses
-  resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+  get 'addresses' => 'public/addresses#index'
+  get 'addresses/:id/edit' => 'public/addresses#edit'
+  post 'addresses' => 'public/addresses#create'
+  patch 'addresses/:id' => 'public/addresses#update'
+  delete 'addresses/:id' => 'public/addresses#destroy'
+
 
 
 
