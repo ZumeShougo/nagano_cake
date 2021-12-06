@@ -4,7 +4,7 @@
       会員情報編集
     </span>
     <div class = "contents">
-      <%= form_with midel: @customer, url:customer_path(current_customer.id) do |f| %>
+      <%= form_with model: @customer, url:customer_path(current_customer.id) do |f| %>
         <table class = "customer-edit-table">
           <tbody>
             <tr>
@@ -12,7 +12,7 @@
                 氏名
               </td>
               <td width = "500px">
-                <%= f.text_field :last_name %> <%= text_field :first_name %>
+                <%= f.text_field :last_name %> <%= f.text_field :first_name %>
               </td>
             </tr>
             <tr>
